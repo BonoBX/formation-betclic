@@ -1,0 +1,24 @@
+<header class="fixed-top">
+  <app-icon-menu (click)="toggleMenu()"></app-icon-menu>
+  header
+</header>
+
+<main [ngClass]="{'close-aside': !open}">
+  <div class="shadow position-fixed"></div>
+
+  <aside>
+    <div class="scroller">
+      navigation
+    </div>
+  </aside>
+
+  <div class="page">
+    <div class="contents">
+      content
+    </div>
+
+    <footer>
+      Footer
+    </footer>
+  </div>
+</main>
