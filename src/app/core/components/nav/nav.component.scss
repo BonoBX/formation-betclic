@@ -1,3 +1,9 @@
-// .nav-link {
+@import "themes";
 
-// }
+.nav-link {
+  text-decoration: inherit;
+}
+
+.active {
+  color: $color3;
+}
