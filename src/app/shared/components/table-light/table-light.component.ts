@@ -7,7 +7,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TableLightComponent implements OnInit {
 
-    @Input() collection: any[];
     @Input() headers: string[];
 
   constructor() { }

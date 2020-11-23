@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Client } from 'src/app/shared/models/client.model';
 import { ClientsService } from '../../services/clients.service';
 
 @Component({
@@ -8,14 +9,26 @@ import { ClientsService } from '../../services/clients.service';
 })
 export class PageListClientsComponent implements OnInit {
 
+  public headers: string[];
+  public clientCollection: Client[];
+
   constructor(private clientService: ClientsService) { }
 
   ngOnInit(): void {
     this.clientService.collection.subscribe(
       (data) => {
-        console.log(data);
+        this.clientCollection = data;
       }
     )
+    this.headers = [
+      "Type",
+      "Client",
+      "Nb. jours",
+      "Tjm HT",
+      "Total HT",
+      "Total TTC",
+      "Etat"
+    ]
   }
 
 }

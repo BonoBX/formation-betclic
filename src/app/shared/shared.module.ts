@@ -5,10 +5,12 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { BtnComponent } from './components/btn/btn.component';
 import { TableLightComponent } from './components/table-light/table-light.component';
 import { TotalPipe } from './pipes/total.pipe';
+import { StateDirective } from './directives/state.directive';
+import { PageListOrdersComponent } from '../orders/pages/page-list-orders/page-list-orders.component';
 
 
 @NgModule({
-  declarations: [BtnComponent, TableLightComponent, TotalPipe],
+  declarations: [BtnComponent, TableLightComponent, TotalPipe, StateDirective],
   imports: [
     CommonModule,
     SharedRoutingModule
@@ -16,7 +18,9 @@ import { TotalPipe } from './pipes/total.pipe';
   exports: [
     BtnComponent,
     TableLightComponent,
-    TotalPipe
+    TotalPipe,
+    // PageListOrdersComponent,
+    StateDirective
   ]
 })
 export class SharedModule { }

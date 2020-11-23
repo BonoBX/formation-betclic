@@ -4,7 +4,7 @@
       "tjmHt": 500,
       "nbJours": 1,
       "tva": 20,
-      "state": "Confirm",
+      "state": "CONFIRM",
       "typePresta": "Formation",
       "client": "Christophe2",
       "comment": "test",
