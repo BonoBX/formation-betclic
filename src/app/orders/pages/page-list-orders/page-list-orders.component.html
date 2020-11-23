@@ -1,1 +1,1 @@
-<app-table-light [headers]="headers"></app-table-light>
+<app-table-light *ngIf="orderCollection" [headers]="headers" [collection]="orderCollection"></app-table-light>
