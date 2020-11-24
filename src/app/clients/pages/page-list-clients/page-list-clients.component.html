@@ -1,5 +1,5 @@
 <app-template-a title="Clients" subtitle="Liste">
-  <app-table-dark *ngIf="clientCollection | async as clientCollection" [headers]="headers">
+  <app-table-dark *ngIf="clientCollection$ | async as clientCollection" [headers]="headers">
     <tr *ngFor="let item of clientCollection">
       <td>{{ item.id }}</td>
       <td>{{ item.state }}</td>

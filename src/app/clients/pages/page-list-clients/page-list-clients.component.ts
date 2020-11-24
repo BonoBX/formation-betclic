@@ -30,27 +30,12 @@ export class PageListClientsComponent implements OnInit, OnDestroy {
     this.clientService.refresh$.next(true);
     this.clientCollection$ = this.clientService.collection;
     this.headers = [
-      "Type",
-      "Client",
       "Nb. jours",
-      "Tjm HT",
-      "Total HT",
-      "Total TTC",
-      "Etat"
+      "Etat",
+      "Client",
+      "CA",
+      "Commentaire"
     ]
-  }
-
-  public changeState(item: Client, event) {
-    this.clientService.changeState(item)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(
-        (result) => {
-          item.state = result.state;
-        },
-        (error) => {
-          event.target.value = item.state;
-        }
-      )
   }
 
   public addClient() {
@@ -68,7 +53,7 @@ export class PageListClientsComponent implements OnInit, OnDestroy {
   }
 
   public gotoEdit(item: Client) {
-    this.router.navigate(['orders', 'edit', item.id]);
+    this.router.navigate(['clients', 'edit', item.id]);
   }
 
   ngOnDestroy() {

@@ -32,15 +32,11 @@ export class ClientsService {
         }
       }
     )
+    console.log(this.pCollection);
   }
 
   get collection(): Observable<Client[]> {
     return this.pCollection.asObservable();
-  }
-
-  public changeState(item: Client): Observable<Client> {
-    const obj = new Client({...item});
-    return this.updateItem(obj);
   }
 
   public updateItem(item: Client): Observable<Client> {

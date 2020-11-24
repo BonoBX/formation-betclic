@@ -23,17 +23,18 @@ export class InvalidMessageDirective implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.control = this.form.getError(this.invalidRow);
+    console.log(this.control);
     let formSubmit$ = (<FormGroupDirective>this.fg).ngSubmit.pipe(
       map(() => {
         this.hasSubmitted = true;
       })
-    )
+    );
     this.controlValue$ = merge(this.control.valueChanges, of(''), formSubmit$);
     this.controlSubscription = this.controlValue$.subscribe(
       (newValue) => {
         this.setVisible();
       }
-    )
+    );
   }
 
   private setVisible() {

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { StateOrder } from 'src/app/shared/enums/state-order.enum';
+import { Client } from 'src/app/shared/models/client.model';
 import { Order } from 'src/app/shared/models/order.model';
 import { environment } from 'src/environments/environment';
 
@@ -45,6 +46,12 @@ export class OrdersService {
     return this.updateItem(obj);
   }
 
+  public changeClient(item: Order, name: string) {
+    const obj = new Order({...item});
+    obj.client = name;
+    return this.updateItem(obj);
+  }
+
   public updateItem(item: Order): Observable<Order> {
    return this.http.put<Order>(`${this.urlApi}orders/${item.id}`, item);
   }
@@ -59,5 +66,9 @@ export class OrdersService {
 
   public getItemById(id: string): Observable<Order> {
     return this.http.get<Order>(`${this.urlApi}orders/${id}`);
+  }
+
+  public getItemByClientName(name: string): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.urlApi}orders?client=${name}`);
   }
 }

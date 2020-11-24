@@ -2,7 +2,12 @@
   <app-table-light *ngIf="orderCollection$ | async as orderCollection" [headers]="headers">
     <tr *ngFor="let item of orderCollection">
       <td>{{ item.typePresta }}</td>
-      <td>{{ item.client }}</td>
+      <!-- <td>{{ item.client }}</td> -->
+      <td>
+        <select (change)="changeClient(item, $event)">
+          <option *ngFor="let c of clients" [value]="c.name" [selected]="item.client === c.name">{{ c.name }}</option>
+        </select>
+      </td>
       <td>{{ item.nbJours }}</td>
       <td>{{ item.tjmHt | currency: 'EUR' }}</td>
       <td>{{ item | total | currency: 'EUR' }}</td>

@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
+import { ClientsService } from 'src/app/clients/services/clients.service';
 import { StateOrder } from 'src/app/shared/enums/state-order.enum';
+import { Client } from 'src/app/shared/models/client.model';
 import { Order } from 'src/app/shared/models/order.model';
 import { OrdersService } from '../../services/orders.service';
 
@@ -18,10 +20,12 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
   public orderCollection$: Observable<Order[]>;
   public states = Object.values(StateOrder);
   public destroy$: Subject<any> = new Subject();
+  public clients: Client[];
   // public subscription: Subscription;
 
   constructor(
     private orderService: OrdersService,
+    private clientService: ClientsService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -32,6 +36,12 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
     // );
     this.orderService.refresh$.next(true);
     this.orderCollection$ = this.orderService.collection;
+    this.clientService.refresh$.next(true);
+    this.clientService.collection.subscribe(
+      (clients) => {
+        this.clients = clients;
+      }
+    )
     this.headers = [
       "Type",
       "Client",
@@ -57,6 +67,15 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
       )
   }
 
+  public changeClient(item: Order, event: any) {
+    this.orderService.changeClient(item, event.target.value).pipe(takeUntil(this.destroy$))
+    .subscribe(
+      (result) => {
+
+      }
+    )
+  }
+
   public addOrder() {
     console.log("ajout d'une commande");
   }
@@ -77,5 +96,13 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     //this.subscription.unsubscribe();
+  }
+
+  public getOrderByClientName(name: string) {
+    this.orderService.getItemByClientName('Christophe2').subscribe(
+      (res) => {
+        console.log(res);
+      }
+    )
   }
 }

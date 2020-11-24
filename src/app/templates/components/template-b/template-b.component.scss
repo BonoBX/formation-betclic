@@ -11,3 +11,15 @@ div {
 
   }
 }
+
+.state-cancel {
+  background: $color-error;
+}
+
+.state-option {
+  background: $color1;
+}
+
+.state-confirm {
+  background: $color2;
+}

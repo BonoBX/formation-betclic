@@ -30,14 +30,14 @@
     <div class="form-group">
       <label for="comment">Comment :</label>
       <input formControlName="comment" type="text" class="form-control" id="comment">
-      <div invalidRow="comment">
+      <!-- <div invalidRow="comment">
         <p *invalidType="'required'">
           Champs requis
         </p>
         <p *invalidType="'minlength'">
           Champs trop petit
         </p>
-      </div>
+      </div> -->
       <div class="alert alert-danger" *ngIf="formGroup.get('comment').errors?.required && formGroup.get('comment').touched">Champs requis</div>
       <div class="alert alert-danger" *ngIf="formGroup.get('comment').errors?.minlength && formGroup.get('comment').touched">Champs trop petit</div>
     </div>

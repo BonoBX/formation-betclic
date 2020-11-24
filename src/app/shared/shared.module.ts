@@ -12,7 +12,6 @@ import { ModalComponent } from './components/modal/modal.component';
 import { InvalidMessageDirective } from './directives/invalid-message.directive';
 import { InvalidTypeDirective } from './directives/invalid-type.directive';
 
-
 @NgModule({
   declarations: [BtnComponent, TableLightComponent, TotalPipe, StateDirective, TableDarkComponent, ModalComponent, InvalidMessageDirective, InvalidTypeDirective],
   imports: [
