@@ -1,0 +1,28 @@
+<div class="container">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nom :</label>
+      <input formControlName="name" type="text" class="form-control" id="name">
+      <div class="alert alert-danger" *ngIf="formGroup.get('name').invalid && formGroup.get('name').touched">Champs requis</div>
+    </div>
+
+    <div class="form-group">
+      <label for="ca">CA :</label>
+      <input formControlName="ca" type="text" class="form-control" id="ca">
+    </div>
+
+    <div class="form-group">
+      <label for="comment">Comment :</label>
+      <input formControlName="comment" type="text" class="form-control" id="comment">
+      <div class="alert alert-danger" *ngIf="formGroup.get('comment').errors?.required && formGroup.get('comment').touched">Champs requis</div>
+      <div class="alert alert-danger" *ngIf="formGroup.get('comment').errors?.minlength && formGroup.get('comment').touched">Champs trop petit</div>
+    </div>
+
+    <div class="form-group">
+      <label for="state">State :</label>
+      <input formControlName="state" type="text" class="form-control" id="state">
+    </div>
+
+    <app-btn typeButton="submit" [disabled]="formGroup.invalid" label="Valider"></app-btn>
+  </form>
+</div>

@@ -1,0 +1,22 @@
+@import "fonts";
+
+app-text {
+  display: block;
+  padding: 10px;
+}
+
+h1 {
+  font-size: $h1-fz;
+}
+
+h2 {
+  font-size: $h2-fz;
+}
+
+h3 {
+  font-size: $h3-fz;
+}
+
+p, span, i, li {
+  font-size: $regular-fz;
+}

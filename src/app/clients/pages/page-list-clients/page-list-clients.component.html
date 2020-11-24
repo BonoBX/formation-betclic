@@ -1,9 +1,15 @@
-<app-table-dark *ngIf="clientCollection" [headers]="headers">
-  <tr *ngFor="let item of clientCollection">
-    <td>{{ item.id }}</td>
-    <td>{{ item.state }}</td>
-    <td>{{ item.name }}</td>
-    <td>{{ item.ca | currency: 'EUR' }}</td>
-    <td>{{ item.comment }}</td>
-  </tr>
-</app-table-dark>
+<app-template-a title="Clients" subtitle="Liste">
+  <app-table-dark *ngIf="clientCollection" [headers]="headers">
+    <tr *ngFor="let item of clientCollection">
+      <td>{{ item.id }}</td>
+      <td>{{ item.state }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.ca | currency: 'EUR' }}</td>
+      <td>{{ item.comment }}</td>
+    </tr>
+
+    <app-btn href="https://www.google.com" label="Go to google"></app-btn>
+    <app-btn route="add" label="Ajouter un client"></app-btn>
+    <app-btn [action]="true" label="do action" (clicked)="addClient()"></app-btn>
+  </app-table-dark>
+</app-template-a>

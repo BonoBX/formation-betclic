@@ -19,4 +19,17 @@ export class ClientsService {
   get collection(): Observable<Client[]> {
     return this.pCollection;
   }
+
+  // public changeState(item: Client): Observable<Client> {
+  //   const obj = new Client({...item});
+  //   return this.updateItem(obj);
+  // }
+
+  // public updateItem(item: Client): Observable<Client> {
+  //   return this.http.put<Client>(`${this.urlApi}clients/${item.id}`, item);
+  // }
+
+  public addItem(item:Client): Observable<Client> {
+    return this.http.post<Client>(`${this.urlApi}clients`, item);
+  }
 }

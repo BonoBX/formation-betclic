@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Client } from 'src/app/shared/models/client.model';
 import { ClientsService } from '../../services/clients.service';
 
@@ -7,10 +8,11 @@ import { ClientsService } from '../../services/clients.service';
   templateUrl: './page-list-clients.component.html',
   styleUrls: ['./page-list-clients.component.scss']
 })
-export class PageListClientsComponent implements OnInit {
+export class PageListClientsComponent implements OnInit, OnDestroy {
 
   public headers: string[];
   public clientCollection: Client[];
+  public clientCollection$: Observable<Client[]>;
 
   constructor(private clientService: ClientsService) { }
 
@@ -31,4 +33,22 @@ export class PageListClientsComponent implements OnInit {
     ]
   }
 
+  // public changeState(item: Client, event) {
+  //   this.clientService.changeState(item, event.target.value).subscribe(
+  //     (result) => {
+  //       item.state = result.state;
+  //     },
+  //     (error) => {
+  //       event.target.value = item.state;
+  //     }
+  //   )
+  // }
+
+  public addClient() {
+    console.log("ajout d'un client");
+  }
+
+  ngOnDestroy() {
+    //this.subscription.unsubscribe();
+  }
 }
