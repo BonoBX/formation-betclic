@@ -1,5 +1,14 @@
 <app-template-a [title]="title" [subtitle]="subtitle">
-  <app-form-orders *ngIf="order$ | async as order" [order]="order" (clicked)="update($event)"></app-form-orders>
+  <app-form-orders *ngIf="order$ | async as order" [order]="order" (clicked)="openUpdateModal($event)"></app-form-orders>
 </app-template-a>
 
-<p *ngIf="order$ | async as order">{{ order | json }}</p>
+<ng-template #updateOrderModal let-modal>
+  <app-modal (dismissed)="dismissModal()">
+    <div class="modal-body">
+      Etes-vous de vos modifications ?
+    </div>
+    <div class="modal-footer">
+      <app-btn [action]="true" (clicked)="update(modalValues)" label="Valider"></app-btn>
+    </div>
+  </app-modal>
+</ng-template>
