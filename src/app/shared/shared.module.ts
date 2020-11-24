@@ -6,7 +6,6 @@ import { BtnComponent } from './components/btn/btn.component';
 import { TableLightComponent } from './components/table-light/table-light.component';
 import { TotalPipe } from './pipes/total.pipe';
 import { StateDirective } from './directives/state.directive';
-import { PageListOrdersComponent } from '../orders/pages/page-list-orders/page-list-orders.component';
 
 
 @NgModule({
@@ -19,7 +18,6 @@ import { PageListOrdersComponent } from '../orders/pages/page-list-orders/page-l
     BtnComponent,
     TableLightComponent,
     TotalPipe,
-    // PageListOrdersComponent,
     StateDirective
   ]
 })

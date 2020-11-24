@@ -36,4 +36,5 @@ export class OrdersService {
 
   public updateItem(item: Order): Observable<Order> {
    return this.http.put<Order>(`${this.urlApi}orders/${item.id}`, item);
- }}
+ }
+}
