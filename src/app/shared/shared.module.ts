@@ -9,10 +9,12 @@ import { StateDirective } from './directives/state.directive';
 import { TableDarkComponent } from './components/table-dark/table-dark.component';
 import { Router, RouterModule } from '@angular/router';
 import { ModalComponent } from './components/modal/modal.component';
+import { InvalidMessageDirective } from './directives/invalid-message.directive';
+import { InvalidTypeDirective } from './directives/invalid-type.directive';
 
 
 @NgModule({
-  declarations: [BtnComponent, TableLightComponent, TotalPipe, StateDirective, TableDarkComponent, ModalComponent],
+  declarations: [BtnComponent, TableLightComponent, TotalPipe, StateDirective, TableDarkComponent, ModalComponent, InvalidMessageDirective, InvalidTypeDirective],
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -24,7 +26,9 @@ import { ModalComponent } from './components/modal/modal.component';
     TableDarkComponent,
     TotalPipe,
     StateDirective,
-    ModalComponent
+    ModalComponent,
+    InvalidMessageDirective,
+    InvalidTypeDirective
   ]
 })
 export class SharedModule { }
