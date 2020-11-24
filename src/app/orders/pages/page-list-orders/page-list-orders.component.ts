@@ -43,4 +43,8 @@ export class PageListOrdersComponent implements OnInit {
       }
     )
   }
+
+  public addOrder() {
+    console.log("ajout d'une commande");
+  }
 }

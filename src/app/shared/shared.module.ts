@@ -7,13 +7,15 @@ import { TableLightComponent } from './components/table-light/table-light.compon
 import { TotalPipe } from './pipes/total.pipe';
 import { StateDirective } from './directives/state.directive';
 import { TableDarkComponent } from './components/table-dark/table-dark.component';
+import { Router, RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [BtnComponent, TableLightComponent, TotalPipe, StateDirective, TableDarkComponent],
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    RouterModule
   ],
   exports: [
     BtnComponent,
