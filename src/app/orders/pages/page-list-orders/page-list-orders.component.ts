@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { StateOrder } from 'src/app/shared/enums/state-order.enum';
@@ -19,7 +20,9 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
   public destroy$: Subject<any> = new Subject();
   // public subscription: Subscription;
 
-  constructor(private orderService: OrdersService) { }
+  constructor(
+    private orderService: OrdersService,
+    private router: Router) { }
 
   ngOnInit(): void {
     // this.subscription = this.orderService.collection.subscribe(
@@ -66,6 +69,10 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
           this.orderService.refresh$.next(true);
         }
       );
+  }
+
+  public gotoEdit(item: Order) {
+    this.router.navigate(['orders', 'edit', item.id]);
   }
 
   ngOnDestroy() {

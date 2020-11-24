@@ -11,10 +11,11 @@ import { FormOrdersComponent } from './components/form-orders/form-orders.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageAddOrdersComponent } from './pages/page-add-orders/page-add-orders.component';
 import { IconsModule } from '../icons/icons.module';
+import { PageEditOrdersComponent } from './pages/page-edit-orders/page-edit-orders.component';
 
 
 @NgModule({
-  declarations: [PageListOrdersComponent, FormOrdersComponent, PageAddOrdersComponent],
+  declarations: [PageListOrdersComponent, FormOrdersComponent, PageAddOrdersComponent, PageEditOrdersComponent],
   imports: [
     CommonModule,
     OrdersRoutingModule,

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StateOrder } from 'src/app/shared/enums/state-order.enum';
 import { Order } from 'src/app/shared/models/order.model';
@@ -10,7 +10,7 @@ import { Order } from 'src/app/shared/models/order.model';
 })
 export class FormOrdersComponent implements OnInit {
 
-  public order: Order = new Order();
+  @Input() public order: Order = new Order();
   public formGroup: FormGroup;
   public states = Object.values(StateOrder);
   @Output() public submitted: EventEmitter<any> = new EventEmitter();

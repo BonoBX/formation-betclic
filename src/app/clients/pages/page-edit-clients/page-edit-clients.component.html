@@ -1,0 +1,5 @@
+<app-template-a title="Clients" subtitle="Ajout">
+  <app-form-clients *ngIf="client$ | async as client" [client]="client" (clicked)="update($event)"></app-form-clients>
+</app-template-a>
+
+<p *ngIf="client$ | async as client">{{ client | json }}</p>

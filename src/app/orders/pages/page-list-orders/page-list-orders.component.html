@@ -13,7 +13,7 @@
         </select>
       </td>
       <td>
-        <app-icon-update></app-icon-update>
+        <app-icon-update (click)="gotoEdit(item)"></app-icon-update>
         <app-icon-delete (click)="deleteOrder(item)"></app-icon-delete>
       </td>
     </tr>

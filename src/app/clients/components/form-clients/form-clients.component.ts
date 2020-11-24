@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Client } from 'src/app/shared/models/client.model';
 
@@ -9,7 +9,7 @@ import { Client } from 'src/app/shared/models/client.model';
 })
 export class FormClientsComponent implements OnInit {
 
-  public client: Client = new Client();
+  @Input() public client: Client = new Client();
   public formGroup: FormGroup;
   @Output() public submitted: EventEmitter<any> = new EventEmitter();
   constructor(private formB: FormBuilder) { }

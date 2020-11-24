@@ -47,13 +47,17 @@ export class OrdersService {
 
   public updateItem(item: Order): Observable<Order> {
    return this.http.put<Order>(`${this.urlApi}orders/${item.id}`, item);
- }
+  }
 
- public addItem(item:Order): Observable<Order> {
-   return this.http.post<Order>(`${this.urlApi}orders`, item);
- }
+  public addItem(item:Order): Observable<Order> {
+    return this.http.post<Order>(`${this.urlApi}orders`, item);
+  }
 
- public deleteItem(item: Order): Observable<Order> {
-  return this.http.delete<Order>(`${this.urlApi}orders/${item.id}`);
-}
+  public deleteItem(item: Order): Observable<Order> {
+    return this.http.delete<Order>(`${this.urlApi}orders/${item.id}`);
+  }
+
+  public getItemById(id: string): Observable<Order> {
+    return this.http.get<Order>(`${this.urlApi}orders/${id}`);
+  }
 }
