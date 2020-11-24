@@ -10,6 +10,7 @@ import { TemplatesModule } from '../templates/templates.module';
 import { FormOrdersComponent } from './components/form-orders/form-orders.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageAddOrdersComponent } from './pages/page-add-orders/page-add-orders.component';
+import { IconsModule } from '../icons/icons.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { PageAddOrdersComponent } from './pages/page-add-orders/page-add-orders.
     SharedModule,
     TextModule,
     TemplatesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IconsModule
   ]
 })
 export class OrdersModule { }

@@ -19,26 +19,6 @@
       "comment": "comment test",
       "client": "Test",
       "id": 4
-    },
-    {
-      "tjmHt": 500,
-      "nbJours": 1,
-      "tva": 20,
-      "state": "OPTION",
-      "typePresta": "testRouter",
-      "comment": "qdfqsdf",
-      "client": "Router",
-      "id": 5
-    },
-    {
-      "tjmHt": 500,
-      "nbJours": 1,
-      "tva": 20,
-      "state": "OPTION",
-      "typePresta": "TestAlain 2",
-      "comment": "nx,;n;",
-      "client": "jfglk",
-      "id": 6
     }
   ],
   "orders2": [

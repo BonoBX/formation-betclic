@@ -12,6 +12,10 @@
           <option *ngFor="let state of states" [value]="state" [selected]="state === item.state">{{ state }}</option>
         </select>
       </td>
+      <td>
+        <app-icon-update></app-icon-update>
+        <app-icon-delete (click)="deleteOrder(item)"></app-icon-delete>
+      </td>
     </tr>
   </app-table-light>
 
@@ -33,6 +37,10 @@
         <select (change)="changeState(item, $event)">
           <option *ngFor="let state of states" [value]="state" [selected]="state === item.state">{{ state }}</option>
         </select>
+      </td>
+      <td>
+        <app-icon-update></app-icon-update>
+        <app-icon-delete (click)="deleteOrder(item)"></app-icon-delete>
       </td>
     </tr>
   </app-table-light>

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { StateOrder } from 'src/app/shared/enums/state-order.enum';
 import { Order } from 'src/app/shared/models/order.model';
 import { OrdersService } from '../../services/orders.service';
@@ -15,6 +16,7 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
   public orderCollection: Order[];
   public orderCollection$: Observable<Order[]>;
   public states = Object.values(StateOrder);
+  public destroy$: Subject<any> = new Subject();
   // public subscription: Subscription;
 
   constructor(private orderService: OrdersService) { }
@@ -25,6 +27,7 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
     //       this.orderCollection = data;
     //     }
     // );
+    this.orderService.refresh$.next(true);
     this.orderCollection$ = this.orderService.collection;
     this.headers = [
       "Type",
@@ -33,23 +36,36 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
       "Tjm HT",
       "Total HT",
       "Total TTC",
-      "Etat"
+      "Etat",
+      "Actions"
     ]
   }
 
   public changeState(item: Order, event) {
-    this.orderService.changeState(item, event.target.value).subscribe(
-      (result) => {
-        item.state = result.state;
-      },
-      (error) => {
-        event.target.value = item.state;
-      }
-    )
+    this.orderService.changeState(item, event.target.value)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(
+        (result) => {
+          item.state = result.state;
+        },
+        (error) => {
+          event.target.value = item.state;
+        }
+      )
   }
 
   public addOrder() {
     console.log("ajout d'une commande");
+  }
+
+  public deleteOrder(item: Order) {
+    this.orderService.deleteItem(item)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(
+        (res) => {
+          this.orderService.refresh$.next(true);
+        }
+      );
   }
 
   ngOnDestroy() {
