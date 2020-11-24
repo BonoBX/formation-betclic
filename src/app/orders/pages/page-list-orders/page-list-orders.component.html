@@ -1,4 +1,4 @@
-<app-table-light *ngIf="orderCollection" [headers]="headers">
+<app-table-light *ngIf="orderCollection$ | async as orderCollection" [headers]="headers">
   <tr *ngFor="let item of orderCollection">
     <td>{{ item.typePresta }}</td>
     <td>{{ item.client }}</td>
