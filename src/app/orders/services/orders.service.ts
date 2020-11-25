@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, forkJoin, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { StateOrder } from 'src/app/shared/enums/state-order.enum';
-import { Client } from 'src/app/shared/models/client.model';
 import { Order } from 'src/app/shared/models/order.model';
 import { environment } from 'src/environments/environment';
 
@@ -29,6 +28,7 @@ export class OrdersService {
           ).subscribe(
             (data) => {
               this.pCollection.next(data);
+              this.pCollection.complete();  // Nécessaire au forkJoin et au combineLatest
             }
           );
         }
@@ -38,6 +38,14 @@ export class OrdersService {
 
   get collection(): Observable<Order[]> {
     return this.pCollection.asObservable();
+  }
+
+  public serializeOrder(collectionOrders: Order[]) : Order[] {
+    return collectionOrders.map(
+      (item) => {
+        return new Order(item);
+      }
+    );
   }
 
   public changeState(item: Order, state: StateOrder): Observable<Order> {
@@ -69,6 +77,23 @@ export class OrdersService {
   }
 
   public getItemByClientName(name: string): Observable<Order[]> {
-    return this.http.get<Order[]>(`${this.urlApi}orders?client=${name}`);
+    return this.http.get<Order[]>(`${this.urlApi}orders?client=${name}`).pipe(
+      map((collection) => this.serializeOrder(collection))
+    );
+  }
+
+  public getItem2ByClientName(name: string): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.urlApi}orders2?client=${name}`).pipe(
+      map((collection) => this.serializeOrder(collection))
+    )
+  }
+
+  public getAllItemByClientName(name: string): Observable<Order[]> {
+    //return combineLatest([this.getItemByClientName(name), this.getItem2ByClientName(name)]).pipe(
+    return forkJoin([this.getItemByClientName(name), this.getItem2ByClientName(name)]).pipe(
+      map(([resultItem, resultItem2]) => {
+        return resultItem.concat(resultItem2);
+      })
+    );
   }
 }

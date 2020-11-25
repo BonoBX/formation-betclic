@@ -56,6 +56,10 @@ export class PageListClientsComponent implements OnInit, OnDestroy {
     this.router.navigate(['clients', 'edit', item.id]);
   }
 
+  public listOrders(item: Client) {
+    this.router.navigate(['clients', 'listOrders', item.id]);
+  }
+
   ngOnDestroy() {
     //this.subscription.unsubscribe();
   }

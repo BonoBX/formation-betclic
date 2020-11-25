@@ -5,7 +5,7 @@ import { PageEditOrdersComponent } from './pages/page-edit-orders/page-edit-orde
 import { PageListOrdersComponent } from './pages/page-list-orders/page-list-orders.component';
 
 const routes: Routes = [
-  { path: "", component: PageListOrdersComponent },
+  { path: "", component: PageListOrdersComponent, data: { client: "Christophe2" } },
   { path: "add", component: PageAddOrdersComponent },
   {
     path: "edit/:id",

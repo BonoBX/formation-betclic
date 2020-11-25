@@ -10,9 +10,10 @@ import { PageAddClientsComponent } from './pages/page-add-clients/page-add-clien
 import { TemplatesModule } from '../templates/templates.module';
 import { PageEditClientsComponent } from './pages/page-edit-clients/page-edit-clients.component';
 import { IconsModule } from '../icons/icons.module';
+import { PageListOrdersClientComponent } from './pages/page-list-orders-client/page-list-orders-client.component';
 
 @NgModule({
-  declarations: [PageListClientsComponent, FormClientsComponent, PageAddClientsComponent, PageEditClientsComponent],
+  declarations: [PageListClientsComponent, FormClientsComponent, PageAddClientsComponent, PageEditClientsComponent, PageListOrdersClientComponent],
   imports: [
     CommonModule,
     ClientsRoutingModule,

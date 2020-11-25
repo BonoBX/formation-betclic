@@ -31,8 +31,7 @@ export class ClientsService {
           );
         }
       }
-    )
-    console.log(this.pCollection);
+    );
   }
 
   get collection(): Observable<Client[]> {

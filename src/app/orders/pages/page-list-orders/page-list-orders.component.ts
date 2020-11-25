@@ -99,7 +99,7 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
   }
 
   public getOrderByClientName(name: string) {
-    this.orderService.getItemByClientName('Christophe2').subscribe(
+    this.orderService.getItemByClientName(name).subscribe(
       (res) => {
         console.log(res);
       }
