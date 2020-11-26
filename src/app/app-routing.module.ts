@@ -3,8 +3,13 @@ import { Routes, RouterModule, PreloadAllModules, Router } from '@angular/router
 import { PageLoginComponent } from './login/pages/page-login/page-login.component';
 
 const routes: Routes = [
-  {path: "login", component: PageLoginComponent},
-  {path: "", redirectTo: "/login", pathMatch: 'full'},
+  // {path: "login", component: PageLoginComponent},
+  {
+    path: "login",
+    component: PageLoginComponent,
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+  },
+  { path: "", redirectTo: "/login", pathMatch: 'full' },
   {
     path: "orders",
     loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)
