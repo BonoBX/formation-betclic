@@ -29,7 +29,7 @@ export class FormOrdersComponent implements OnInit {
     });
   }
 
-    public onSubmit() {
-      this.submitted.emit(this.formGroup.value);
-    }
+  public onSubmit() {
+    this.submitted.emit(this.formGroup.value);
+  }
 }

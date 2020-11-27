@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 import { PageEditOrdersComponent } from './page-edit-orders.component';
 
@@ -8,7 +9,8 @@ describe('PageEditOrdersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageEditOrdersComponent ]
+      declarations: [ PageEditOrdersComponent ],
+      imports: [ ActivatedRoute ]
     })
     .compileComponents();
   });

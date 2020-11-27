@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
@@ -11,7 +11,8 @@ import { OrdersService } from '../../services/orders.service';
 @Component({
   selector: 'app-page-list-orders',
   templateUrl: './page-list-orders.component.html',
-  styleUrls: ['./page-list-orders.component.scss']
+  styleUrls: ['./page-list-orders.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageListOrdersComponent implements OnInit, OnDestroy {
 
@@ -20,13 +21,16 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
   public orderCollection$: Observable<Order[]>;
   public states = Object.values(StateOrder);
   public destroy$: Subject<any> = new Subject();
-  public clients: Client[];
+  // public clients: Client[];
   // public subscription: Subscription;
+
+  public clients$: Observable<Client[]>;
 
   constructor(
     private orderService: OrdersService,
     private clientService: ClientsService,
-    private router: Router) { }
+    private router: Router,
+    private changeDectectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     // this.subscription = this.orderService.collection.subscribe(
@@ -37,11 +41,13 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
     this.orderService.refresh$.next(true);
     this.orderCollection$ = this.orderService.collection;
     this.clientService.refresh$.next(true);
-    this.clientService.collection.subscribe(
-      (clients) => {
-        this.clients = clients;
-      }
-    )
+    // this.clientService.collection.subscribe(
+    //   (clients) => {
+    //     this.clients = clients;
+    //   }
+    // );
+    this.clients$ = this.clientService.collection;
+
     this.headers = [
       "Type",
       "Client",
@@ -51,7 +57,8 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
       "Total TTC",
       "Etat",
       "Actions"
-    ]
+    ];
+    // this.changeDectectorRef.detectChanges();
   }
 
   public changeState(item: Order, event) {
@@ -104,5 +111,9 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
         console.log(res);
       }
     )
+  }
+
+  public check() {
+    console.log("PAGE refreshing ...");
   }
 }

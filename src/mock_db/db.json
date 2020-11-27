@@ -6,18 +6,19 @@
       "tva": 20,
       "state": "OPTION",
       "typePresta": "Formation",
-      "client": "Christophe2",
+      "client": "Test Alain",
       "comment": "test",
       "id": 3
     },
     {
       "tjmHt": 500,
-      "nbJour": 1,
+      "nbJours": 1,
       "tva": 20,
+      "nbJour": 1,
       "state": "OPTION",
       "typePresta": "TypeTest",
       "comment": "comment test",
-      "client": "Test",
+      "client": "Test Alain",
       "id": 4
     },
     {
@@ -27,7 +28,7 @@
       "state": "OPTION",
       "typePresta": "Test Alain",
       "comment": "test comment V2",
-      "client": "Alain",
+      "client": "Toto",
       "id": 5
     },
     {
@@ -37,7 +38,7 @@
       "state": "OPTION",
       "typePresta": "Export",
       "comment": "Commentaire",
-      "client": "Test Alain",
+      "client": "Modis",
       "id": 6
     },
     {
@@ -47,7 +48,7 @@
       "state": "CANCEL",
       "typePresta": "sdfqsdf",
       "comment": "sdfqsdfqsdf",
-      "client": "rerezr",
+      "client": "Test Alain 2",
       "id": 7
     },
     {
@@ -57,7 +58,7 @@
       "state": "CONFIRM",
       "typePresta": "ABC",
       "comment": "Commentaire propre V2",
-      "client": "BCD",
+      "client": "Test Alain",
       "id": 8
     }
   ],

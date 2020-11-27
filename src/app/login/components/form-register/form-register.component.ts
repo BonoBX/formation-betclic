@@ -29,6 +29,7 @@ export class FormRegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log("submit");
     this.submitted.emit(this.registerForm.value);
   }
 }

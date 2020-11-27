@@ -6,6 +6,7 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./table-dark.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class TableDarkComponent implements OnInit {
 
   @Input() headers: string[];

@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PageRegisterComponent } from './page-register.component';
@@ -8,7 +9,8 @@ describe('PageRegisterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageRegisterComponent ]
+      declarations: [ PageRegisterComponent ],
+      imports: [ HttpClientTestingModule ]
     })
     .compileComponents();
   });

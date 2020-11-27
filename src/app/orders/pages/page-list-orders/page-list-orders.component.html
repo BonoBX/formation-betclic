@@ -1,11 +1,11 @@
+<p>{{ check() }}</p>
 <app-template-a title="Commandes" subtitle="Liste">
   <app-table-light *ngIf="orderCollection$ | async as orderCollection" [headers]="headers">
     <tr *ngFor="let item of orderCollection">
       <td>{{ item.typePresta }}</td>
-      <!-- <td>{{ item.client }}</td> -->
       <td>
         <select (change)="changeClient(item, $event)">
-          <option *ngFor="let c of clients" [value]="c.name" [selected]="item.client === c.name">{{ c.name }}</option>
+          <option *ngFor="let c of clients$ | async as clients" [value]="c.name" [selected]="item.client === c.name">{{ c.name }}</option>
         </select>
       </td>
       <td>{{ item.nbJours }}</td>
@@ -29,7 +29,7 @@
   <app-btn [action]="true" label="do action" (clicked)="addOrder()"></app-btn>
 </app-template-a>
 
-<app-template-b title="Commandes" subtitle="Liste">
+<!-- <app-template-b title="Commandes" subtitle="Liste">
   <app-table-light *ngIf="orderCollection$ | async as orderCollection" [headers]="headers">
     <tr *ngFor="let item of orderCollection">
       <td>{{ item.typePresta }}</td>
@@ -53,5 +53,5 @@
   <app-btn href="https://www.google.com" label="Go to google"></app-btn>
   <app-btn route="add" label="Ajouter une commande"></app-btn>
   <app-btn [action]="true" label="do action" (clicked)="addOrder()"></app-btn>
-</app-template-b>
+</app-template-b> -->
 
